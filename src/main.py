@@ -21,13 +21,13 @@ def main(page: ft.Page):
             ft.GestureDetector(
                 key = i,
                 content = ft.Text(
-                value = '',
-                expand = True,
-                text_align = ft.TextAlign.CENTER,
-                color = "white",
-                size = 50,
-                bgcolor = "blue"
-            ),
+                    value = '',
+                    expand = True,
+                    text_align = ft.TextAlign.CENTER,
+                    color = "white",
+                    size = 50,
+                    bgcolor = "blue"
+                ),
                 mouse_cursor = ft.MouseCursor.CLICK,
                 on_tap = do_something
             )
