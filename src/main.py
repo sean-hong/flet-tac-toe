@@ -1,9 +1,13 @@
 import flet as ft
 
 def main(page: ft.Page):
+    display_symbols = [''] * 9
+
     # click event
-    def do_something(argv=None):
-        print("Hello, world!")
+    def do_something(e):
+        e.control.content.value = 'x'
+        display_symbols[e.control.key] = 'x'
+        page.update()
 
     # create the grid board
     grid_board = ft.GridView(
@@ -12,10 +16,18 @@ def main(page: ft.Page):
     )
 
     # fill each grid cell with a click handler
-    for _ in range(0, 9):
+    for i in range(0, 9):
         grid_board.controls.append(
             ft.GestureDetector(
-                content = ft.Container(bgcolor=ft.colors.BLUE, width=50, height=50),
+                key = i,
+                content = ft.Text(
+                value = '',
+                expand = True,
+                text_align = ft.TextAlign.CENTER,
+                color = "white",
+                size = 50,
+                bgcolor = "blue"
+            ),
                 mouse_cursor = ft.MouseCursor.CLICK,
                 on_tap = do_something
             )
