@@ -1,3 +1,15 @@
+from random import randrange
+
+def computer_move(grid: list) -> int:
+    random_index = randrange(len(grid))
+    random_cell = grid[random_index]
+
+    while random_cell:
+        random_index = randrange(len(grid))
+        random_cell = grid[random_index]
+
+    return random_index
+
 def game_is_tied(grid: list) -> bool:
     return '' in grid
 
