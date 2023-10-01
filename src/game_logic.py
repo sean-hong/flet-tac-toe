@@ -10,10 +10,10 @@ def computer_move(grid: list) -> int:
 
     return random_index
 
-def game_is_tied(grid: list) -> bool:
+def game_is_playable(grid: list) -> bool:
     return '' in grid
 
-def check_for_win(grid: list, player: str, computer: str) -> None:
+def check_for_win(grid: list, player: str, computer: str) -> bool:
     # moves that win the game
     WINNING_MOVES = {
         'row1': f'{grid[0]}{grid[1]}{grid[2]}',
@@ -34,10 +34,13 @@ def check_for_win(grid: list, player: str, computer: str) -> None:
     WINNING_VALUES = WINNING_MOVES.values()
 
     if PLAYER_WIN in WINNING_VALUES:
-        pass
+        print(f"{player} wins!")
+        return True
     elif COMPUTER_WIN in WINNING_VALUES:
-        pass
-    elif game_is_tied:
-        pass
+        print(f"{computer} wins!")
+        return True
+    elif not game_is_playable:
+        print(f"tie")
+        return True
     else:
         pass
