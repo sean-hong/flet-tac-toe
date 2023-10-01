@@ -20,30 +20,29 @@ def main(page: ft.Page):
         grid_board.controls.append(
             ft.GestureDetector(
                 key = i,
-                content = ft.Stack(
-                    [
-                        ft.Image(
-                            "https://www.svgrepo.com/show/101416/square-outline.svg",
-                            expand=True
+                content = ft.Stack([
+                    ft.Image(
+                        "https://www.svgrepo.com/show/101416/square-outline.svg",
+                        expand = True
+                    ),
+                    ft.Container(
+                        content = ft.Text(
+                            '',
+                            expand = True,
+                            text_align = ft.TextAlign.CENTER,
+                            size = 50,
+                            color = "white"
                         ),
-                        ft.Container(
-                            content = ft.Text(
-                                value = '',
-                                expand = True,
-                                text_align = ft.TextAlign.CENTER,
-                                color = "white",
-                                size = 50
-                            ),
-                            alignment=ft.alignment.center,
-                        )
-                    ]
-                ),
+                        expand = True,
+                        alignment = ft.alignment.center
+                    )
+                ]),
                 mouse_cursor = ft.MouseCursor.CLICK,
                 on_tap = do_something
             )
         )
 
-    # add element to the page
+    # add widget to the page
     page.controls.append(grid_board)
 
     # update the view
