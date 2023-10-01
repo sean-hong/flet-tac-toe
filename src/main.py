@@ -1,13 +1,42 @@
 import flet as ft
 
+from game_logic import check_for_win, computer_move
+
 def main(page: ft.Page):
     display_symbols = [''] * 9
 
+    game_over = False
+
+    player_symbol = 'X'
+    computer_symbol = 'O'
+
     # click event
-    def do_something(e):
-        e.control.content.controls[1].content.value = 'x'
-        display_symbols[e.control.key] = 'x'
-        page.update()
+    def show_action(e, game_status = game_over):
+        if not game_status:
+            e.control.content.controls[1].content.value = player_symbol
+            display_symbols[e.control.key] = player_symbol
+
+            # update page
+            page.update()
+
+            # check game results
+            if check_for_win(display_symbols, player_symbol, computer_symbol):
+                game_status = True
+                page.clean()
+                return
+
+            computer_action = computer_move(display_symbols)
+            grid_board.controls[computer_action].content.controls[1].content.value = computer_symbol
+            display_symbols[computer_action] = computer_symbol
+
+            # update page
+            page.update()
+
+            # check game results
+            if check_for_win(display_symbols, player_symbol, computer_symbol):
+                game_status = True
+                page.clean()
+                return
 
     # create the grid board
     grid_board = ft.GridView(
@@ -38,7 +67,7 @@ def main(page: ft.Page):
                     )
                 ]),
                 mouse_cursor = ft.MouseCursor.CLICK,
-                on_tap = do_something
+                on_tap = show_action
             )
         )
 
