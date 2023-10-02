@@ -53,7 +53,7 @@ def main(page: ft.Page):
         height = page.window_height,
         expand = True,
         runs_count = 3,
-        child_aspect_ratio = (page.window_width / page.window_height)
+        # child_aspect_ratio = (page.window_width / page.window_height)
     )
 
     # fill each grid cell with a click handler
