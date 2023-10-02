@@ -40,7 +40,7 @@ def check_for_win(grid: list, player: str, computer: str) -> bool:
         print(f"{computer} wins!")
         return True
     elif not game_is_playable:
-        print(f"tie")
+        print("tie")
         return True
     else:
         pass
