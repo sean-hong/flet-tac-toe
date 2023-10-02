@@ -1,5 +1,4 @@
 import flet as ft
-
 from game_logic import check_for_win, computer_move
 
 def main(page: ft.Page):
@@ -11,8 +10,10 @@ def main(page: ft.Page):
     computer_symbol = 'O'
 
     # click event
-    def show_action(e, game_status = game_over):
-        if not game_status:
+    def show_action(e):
+        nonlocal game_over
+
+        if not game_over:
             e.control.content.controls[1].content.value = player_symbol
             display_symbols[e.control.key] = player_symbol
 
@@ -21,8 +22,7 @@ def main(page: ft.Page):
 
             # check game results
             if check_for_win(display_symbols, player_symbol, computer_symbol):
-                game_status = True
-                page.clean()
+                game_over = True
                 return
 
             computer_action = computer_move(display_symbols)
@@ -34,15 +34,11 @@ def main(page: ft.Page):
 
             # check game results
             if check_for_win(display_symbols, player_symbol, computer_symbol):
-                game_status = True
-                page.clean()
+                game_over = True
                 return
 
     # create the grid board
-    grid_board = ft.GridView(
-        expand = True,
-        runs_count = 3
-    )
+    grid_board = ft.GridView(expand=True, runs_count=3)
 
     # fill each grid cell with a click handler
     for i in range(0, 9):
@@ -50,18 +46,9 @@ def main(page: ft.Page):
             ft.GestureDetector(
                 key = i,
                 content = ft.Stack([
-                    ft.Image(
-                        "https://www.svgrepo.com/show/101416/square-outline.svg",
-                        expand = True
-                    ),
+                    ft.Image("https://www.svgrepo.com/show/101416/square-outline.svg", expand=True),
                     ft.Container(
-                        content = ft.Text(
-                            '',
-                            expand = True,
-                            text_align = ft.TextAlign.CENTER,
-                            size = 50,
-                            color = "white"
-                        ),
+                        content = ft.Text('', expand=True, text_align=ft.TextAlign.CENTER, size=50, color="white"),
                         expand = True,
                         alignment = ft.alignment.center
                     )
