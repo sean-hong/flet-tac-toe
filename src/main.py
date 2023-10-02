@@ -10,7 +10,7 @@ def main(page: ft.Page):
     computer_symbol = 'O'
 
     # click event
-    def show_action(e):
+    def run_game_logic(e):
         nonlocal game_over
 
         if not game_over:
@@ -54,7 +54,7 @@ def main(page: ft.Page):
                     )
                 ]),
                 mouse_cursor = ft.MouseCursor.CLICK,
-                on_tap = show_action
+                on_tap = run_game_logic
             )
         )
 
