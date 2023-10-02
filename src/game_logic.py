@@ -14,6 +14,7 @@ def computer_move(grid: list) -> int:
     return random_index
 
 def is_game_still_playable(grid: list) -> bool:
+    # check for empty cells
     return '' in grid
 
 def check_for_game_over(grid: list, player: str, computer: str) -> bool:
