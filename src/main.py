@@ -1,5 +1,5 @@
 import flet as ft
-from game_logic import check_for_win, computer_move
+from game_logic import check_for_game_over, computer_move
 
 def main(page: ft.Page):
     display_symbols = [''] * 9
@@ -21,7 +21,7 @@ def main(page: ft.Page):
             page.update()
 
             # check game results
-            if check_for_win(display_symbols, player_symbol, computer_symbol):
+            if check_for_game_over(display_symbols, player_symbol, computer_symbol):
                 game_over = True
                 return
 
@@ -33,7 +33,7 @@ def main(page: ft.Page):
             page.update()
 
             # check game results
-            if check_for_win(display_symbols, player_symbol, computer_symbol):
+            if check_for_game_over(display_symbols, player_symbol, computer_symbol):
                 game_over = True
                 return
 
