@@ -46,7 +46,7 @@ def main(page: ft.Page):
             ft.GestureDetector(
                 key = i,
                 content = ft.Stack([
-                    ft.Image("https://www.svgrepo.com/show/101416/square-outline.svg", expand=True),
+                    ft.Image("square.png", expand=True),
                     ft.Container(
                         content = ft.Text('', expand=True, text_align=ft.TextAlign.CENTER, size=50, color="white"),
                         expand = True,
@@ -65,4 +65,4 @@ def main(page: ft.Page):
     page.update()
 
 # run app
-ft.app(target=main)
+ft.app(main)

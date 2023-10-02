@@ -47,4 +47,4 @@ def check_for_game_over(grid: list, player: str, computer: str) -> bool:
         print("tie")
         return True
     else:
-        pass
+        return False
