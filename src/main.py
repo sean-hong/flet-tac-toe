@@ -46,7 +46,7 @@ def main(page: ft.Page):
             ft.GestureDetector(
                 key = i,
                 content = ft.Stack([
-                    ft.Image("square.png", expand=True),
+                    ft.Image("square.png", expand=True, fit=ft.ImageFit.FILL),
                     ft.Container(
                         content = ft.Text('', expand=True, text_align=ft.TextAlign.CENTER, size=50, color="white"),
                         expand = True,
