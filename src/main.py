@@ -64,5 +64,14 @@ def main(page: ft.Page):
     # update the view
     page.update()
 
+    def update_grid_sizing(_):
+        grid_board.width = page.window_width
+        grid_board.height = page.window_height
+        grid_board.child_aspect_ratio = (page.window_width / page.window_height)
+
+        page.update()
+
+    page.on_resize = update_grid_sizing
+
 # run app
 ft.app(main)
